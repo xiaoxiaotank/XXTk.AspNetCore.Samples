@@ -1,0 +1,6 @@
+@XXTk.AspNetCore.Samples.BackgroundService_HostAddress = http://localhost:5090
+
+GET {{XXTk.AspNetCore.Samples.BackgroundService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
