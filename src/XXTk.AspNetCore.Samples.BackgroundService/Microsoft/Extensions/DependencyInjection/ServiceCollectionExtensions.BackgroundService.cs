@@ -1,8 +1,9 @@
 ﻿using Quartz.AspNetCore;
 using Quartz;
-using XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Managers;
 using SilkierQuartz;
-using XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers.Quartz;
+using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundJobs.Jobs.Quartz;
+using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Managers;
+using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers.Quartz;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -12,13 +13,20 @@ public static partial class ServiceCollectionExtensions
         this IServiceCollection services,
         Action<IServiceCollectionQuartzConfigurator>? configureQuartz = null,
         Action<QuartzHostedServiceOptions>? configureQuartzHostedService = null,
-        Action<AppBackgroundWorkerManagerOptions>? configureBackgroundWorkerManager = null)
+        Action<AppBackgroundWorkerManagerOptions>? configureBackgroundWorkerManager = null,
+        Action<QuartzBackgroundJobOptions>? configureQuartzBackgroundJob = null)
     {
         var backgroundWorkerManagerOptions = new AppBackgroundWorkerManagerOptions();
 
         configureBackgroundWorkerManager?.Invoke(backgroundWorkerManagerOptions);
 
         services.AddSingleton(Microsoft.Extensions.Options.Options.Create(backgroundWorkerManagerOptions));
+
+        var quartzBackgroundJobOptions = new QuartzBackgroundJobOptions();
+
+        configureQuartzBackgroundJob?.Invoke(quartzBackgroundJobOptions);
+
+        services.AddSingleton(Microsoft.Extensions.Options.Options.Create(quartzBackgroundJobOptions));
 
         // quartz ui
         services.AddSilkierQuartz(options =>
@@ -61,6 +69,7 @@ public static partial class ServiceCollectionExtensions
             return sp.GetRequiredService<ISchedulerFactory>().GetScheduler().ConfigureAwait(false).GetAwaiter().GetResult();
         });
         services.AddSingleton(typeof(QuartzBackgroundWorkerAdapter<>));
+        services.AddTransient(typeof(QuartzJobExecutionAdapter<>));
         services.AddHostedService<BackgroundServiceHostedService>();
 
         return services;

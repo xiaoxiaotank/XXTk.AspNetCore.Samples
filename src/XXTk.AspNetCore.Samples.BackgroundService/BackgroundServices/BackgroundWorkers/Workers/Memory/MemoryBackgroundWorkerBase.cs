@@ -1,7 +1,7 @@
 ﻿using System.Threading.Timers;
-using XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers;
+using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers;
 
-namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers.Memory;
+namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers.Memory;
 
 /// <summary>
 /// 基于内存的后台工作者抽象基类

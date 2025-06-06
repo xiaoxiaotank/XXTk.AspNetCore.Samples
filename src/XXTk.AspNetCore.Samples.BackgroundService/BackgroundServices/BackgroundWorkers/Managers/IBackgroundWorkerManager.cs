@@ -1,6 +1,6 @@
-﻿using XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers;
+﻿using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers;
 
-namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Managers;
+namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Managers;
 
 /// <summary>
 /// 后台工作者管理器（用于在后台持续定时执行的任务）

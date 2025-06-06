@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
-using XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers;
+using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers;
 
-namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Managers;
+namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Managers;
 
 /// <summary>
 /// 默认的基于内存定时器的后台工作者管理器

@@ -1,4 +1,4 @@
-﻿namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers;
+﻿namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers;
 
 /// <summary>
 /// 后台工作者：在后台持续定时执行的任务

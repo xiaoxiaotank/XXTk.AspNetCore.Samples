@@ -1,6 +1,6 @@
-﻿using XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers.Quartz;
+﻿using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers.Quartz;
 
-namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers;
+namespace XXTk.AspNetCore.Samples.BackgroundService;
 
 public class MyQuartzWorker : QuartzBackgroundWorkerBase<MyQuartzWorker>
 {

@@ -1,4 +1,4 @@
-﻿namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers.Memory;
+﻿namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers.Memory;
 
 /// <summary>
 /// 基于内存的后台工作者上下文

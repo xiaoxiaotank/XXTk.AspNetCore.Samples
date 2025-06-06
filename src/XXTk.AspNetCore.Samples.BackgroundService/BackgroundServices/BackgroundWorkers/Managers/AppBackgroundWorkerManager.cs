@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Options;
 using Quartz;
-using XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers;
-using XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers.Quartz;
+using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers;
+using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers.Quartz;
 
-namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Managers;
+namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Managers;
 
 /// <summary>
 /// 基于Quartz和内存的后台工作者管理器

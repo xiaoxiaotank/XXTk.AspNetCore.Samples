@@ -1,6 +1,6 @@
-﻿using XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers;
+﻿using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers;
 
-namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Managers;
+namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Managers;
 
 public class AppBackgroundWorkerManagerOptions
 {

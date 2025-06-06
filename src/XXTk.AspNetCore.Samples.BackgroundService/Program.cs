@@ -2,8 +2,8 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using NLog;
 using NLog.Web;
-using XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers;
-using XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers;
+using XXTk.AspNetCore.Samples.BackgroundService;
+using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers;
 
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("starting...");
@@ -46,6 +46,10 @@ try
         {
             options.AddBackgroundWoker<MyQuartzWorker>();
             options.AddBackgroundWoker<MyMemoryWorker>();
+        },
+        configureQuartzBackgroundJob: options =>
+        {
+            options.AddJob<MyQuartzJob>();
         });
 
     #endregion

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Timers;
-using XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers.Memory;
+using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers.Memory;
 
-namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers;
+namespace XXTk.AspNetCore.Samples.BackgroundService;
 
 public class MyMemoryWorker : MemoryBackgroundWorkerBase
 {

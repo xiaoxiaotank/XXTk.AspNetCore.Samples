@@ -1,6 +1,7 @@
 ﻿using Quartz;
+using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers;
 
-namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundWorkers.Abstractions.Workers.Quartz;
+namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers.Quartz;
 
 /// <summary>
 /// 基于 Quartz 的后台工作者抽象基类
@@ -28,9 +29,9 @@ public abstract class QuartzBackgroundWorkerBase<TWorker> : QuartzBackgroundWork
         return JobBuilder.Create<QuartzBackgroundWorkerAdapter<TWorker>>().WithIdentity(typeof(TWorker).FullName!);
     }
 
-    protected virtual TriggerBuilder CreateTriggerBuilder()
+    protected virtual TriggerBuilder CreateTriggerBuilder(BackgroundServicePriority priority = BackgroundServicePriority.Normal)
     {
-        return TriggerBuilder.Create().WithIdentity(typeof(TWorker).FullName!);
+        return TriggerBuilder.Create().WithIdentity(typeof(TWorker).FullName!).WithPriority((int)priority);
     }
 
     /// <summary>
@@ -38,10 +39,10 @@ public abstract class QuartzBackgroundWorkerBase<TWorker> : QuartzBackgroundWork
     /// </summary>
     /// <param name="period"></param>
     /// <returns></returns>
-    protected virtual void SetByPeriod(int period)
+    protected virtual void SetByPeriod(int period, BackgroundServicePriority priority = BackgroundServicePriority.Normal)
     {
         JobDetail = CreateJobBuilder().Build();
-        Trigger = CreateTriggerBuilder().WithSimpleSchedule(builder =>
+        Trigger = CreateTriggerBuilder(priority: priority).WithSimpleSchedule(builder =>
         {
             builder.WithInterval(TimeSpan.FromMilliseconds(period)).RepeatForever();
         }).Build();
