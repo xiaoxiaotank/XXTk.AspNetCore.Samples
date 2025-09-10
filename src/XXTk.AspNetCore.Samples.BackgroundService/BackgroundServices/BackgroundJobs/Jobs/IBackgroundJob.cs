@@ -1,9 +1,14 @@
 ﻿namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundJobs.Jobs;
 
+public interface IBackgroundJob
+{
+
+}
+
 /// <summary>
 /// 后台作业接口
 /// </summary>
-public interface IBackgroundJob<in TArgs>
+public interface IBackgroundJob<in TArgs> : IBackgroundJob
 {
     /// <summary>
     /// 执行作业

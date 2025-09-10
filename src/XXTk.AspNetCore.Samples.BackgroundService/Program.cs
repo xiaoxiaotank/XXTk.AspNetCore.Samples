@@ -3,6 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using NLog;
 using NLog.Web;
 using XXTk.AspNetCore.Samples.BackgroundService;
+using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundJobs.Jobs;
 using XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.BackgroundWorkers.Workers;
 
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -19,7 +20,7 @@ try
     #region Add services to the container
 
     builder.AddAppNLog(true);
-    builder.UseAppAutofacServiceProviderFactory([typeof(BackgroundWorkerBase)]);
+    builder.UseAppAutofacServiceProviderFactory([typeof(BackgroundWorkerBase), typeof(IBackgroundJob)]);
 
     #region Options
 

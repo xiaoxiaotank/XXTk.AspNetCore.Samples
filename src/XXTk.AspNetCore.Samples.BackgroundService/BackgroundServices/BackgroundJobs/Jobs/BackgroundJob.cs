@@ -7,12 +7,11 @@ namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.Backgroun
 /// </summary>
 public abstract class BackgroundJob<TArgs> : IBackgroundJob<TArgs>
 {
-    protected BackgroundJob()
-    {
-        Logger = NullLogger<BackgroundJob<TArgs>>.Instance;
-    }
+    public ITransientCachedServiceProvider LazyServiceProvider { get; set; } = default!;
 
-    public ILogger<BackgroundJob<TArgs>> Logger { get; set; }
+    protected ILoggerFactory? LoggerFactory => LazyServiceProvider.GetService<ILoggerFactory>();
+
+    protected ILogger Logger => LazyServiceProvider.GetService<ILogger>(sp => LoggerFactory?.CreateLogger(GetType().FullName!) ?? NullLogger.Instance);
 
     public abstract Task ExecuteAsync(TArgs args);
 }

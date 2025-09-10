@@ -9,12 +9,12 @@ namespace XXTk.AspNetCore.Samples.BackgroundService.BackgroundServices.Backgroun
 /// </summary>
 public class BackgroundJobExecuter : IBackgroundJobExecuter
 {
-    public BackgroundJobExecuter()
+    public BackgroundJobExecuter(ILogger<BackgroundJobExecuter> logger)
     {
-        Logger = NullLogger<BackgroundJobExecuter>.Instance;
+        Logger = logger;
     }
 
-    public ILogger<BackgroundJobExecuter> Logger { protected get; set; }
+    private ILogger<BackgroundJobExecuter> Logger { get; set; }
 
     public virtual async Task ExecuteAsync(JobExecutionContext context)
     {
@@ -27,7 +27,9 @@ public class BackgroundJobExecuter : IBackgroundJobExecuter
 
         try
         {
+            Logger.LogInformation($"{context.JobType.AssemblyQualifiedName!}后台作业开始执行，Args：{JsonSerializer.Serialize(context.JobArgs)}");
             await (Task)jobExecuteMethod.Invoke(job, [context.JobArgs])!;
+            Logger.LogInformation($"{context.JobType.AssemblyQualifiedName!}后台作业执行成功");
         }
         catch (Exception ex)
         {
