@@ -1,0 +1,6 @@
+@XXTk.AspNetCore.Samples.AuditLog_HostAddress = http://localhost:5222
+
+GET {{XXTk.AspNetCore.Samples.AuditLog_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
